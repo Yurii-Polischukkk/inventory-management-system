@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMS.WebApp", "IMS.WebApp\IMS.WebApp.csproj", "{F261B177-3008-4305-A326-5464A4020AF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMS.Shared", "IMS.Shared\IMS.Shared.csproj", "{97005599-63D2-4820-9609-3A8A39E09DF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F261B177-3008-4305-A326-5464A4020AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F261B177-3008-4305-A326-5464A4020AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F261B177-3008-4305-A326-5464A4020AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F261B177-3008-4305-A326-5464A4020AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97005599-63D2-4820-9609-3A8A39E09DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97005599-63D2-4820-9609-3A8A39E09DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97005599-63D2-4820-9609-3A8A39E09DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97005599-63D2-4820-9609-3A8A39E09DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8215C009-829C-4CAD-A724-7AE4B261BD38}
+	EndGlobalSection
+EndGlobal
