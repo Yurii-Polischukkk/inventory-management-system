@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>IMS.Client.Server-300787d2-bdad-45eb-9532-d674b65108a7</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Client\IMS.Client.Client.csproj" />
+    <ProjectReference Include="..\Shared\IMS.Client.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="6.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23" />
+  </ItemGroup>
+
+</Project>

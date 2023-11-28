@@ -14,6 +14,8 @@ namespace IMS.Shared
         public int InventoryNumber { get; set; }
         public int InventoryId { get; set; }
         public Inventory Inventory { get; set; }
+        public Recipient Recipient {  get; set; }
+        public int RecipientId { get; set;}
 
     }
 }

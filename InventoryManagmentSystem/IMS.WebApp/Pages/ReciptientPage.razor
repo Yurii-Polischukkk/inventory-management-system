@@ -1,4 +1,4 @@
-﻿@page "/inventories"
+﻿@page "/recipients"
 @using IMS.WebApp
 @using IMS.Shared
 @using System
@@ -16,14 +16,14 @@
         </CardHeaderContent>
     </MudCardHeader>
     <MudCardContent>
-        <EditForm OnValidSubmit="Add" OnInvalidSubmit='()=>snackBar.Add("Provide a name",Severity.Warning)' Model="@inventory">
-            <MudTextField @bind-Value="inventory.InventoryName" Label="Department Name" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+        <EditForm OnValidSubmit="Add" OnInvalidSubmit='()=>snackBar.Add("Provide a name",Severity.Warning)' Model="@recipient">
+            <MudTextField @bind-Value="recipient.RecipientName" Label="Department Name" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
             <MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="Add">Add Inventory</MudButton>
         </EditForm>
     </MudCardContent>
 </MudCard>
 
-<MudTable RowsPerPage="5" @ref="@_table" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info" Style="color: white" Elevation="25" Items="GetAll()" Filter="new Func<Inventory, bool>(Search)" @bind-department="inventory">
+<MudTable RowsPerPage="5" @ref="@_table" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info" Style="color: white" Elevation="25" Items="GetAll()" Filter="new Func<Recipient, bool>(Search)" @bind-department="recipient">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Tools</MudText>
         <MudSpacer />
@@ -35,8 +35,8 @@
         <MudTh>Actions</MudTh>
     </HeaderContent>
     <RowTemplate>
-        <MudTd DataLabel="Id">@context.InventoryId</MudTd>
-        <MudTd DataLabel="Inventory Name">@context.InventoryName</MudTd>
+        <MudTd DataLabel="Id">@context.RecipientId</MudTd>
+        <MudTd DataLabel="Inventory Name">@context.RecipientName</MudTd>
         <MudTd DataLabel="Actions">
             <MudFab @onclick="@(()=>Update(context))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
             <MudFab @onclick="@(()=>Delete(context))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />
@@ -57,7 +57,6 @@
     private Recipient recipient = new Recipient();
     private List<Recipient> recipients = new List<Recipient>();
 
-
     protected override async Task OnInitializedAsync()
     {
         inventories = inventoryService.GetAll();
@@ -65,55 +64,55 @@
         recipients = recipientService.GetAll();
     }
 
-    private bool Search(Inventory inventory)
+    private bool Search(Recipient recipient)
     {
         if (string.IsNullOrWhiteSpace(searchString)) return true;
-        if (inventory.InventoryName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        if (recipient.RecipientName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
         {
             return true;
         }
         return false;
     }
 
-    private List<Inventory> GetAll()
+    private List<Recipient> GetAll()
     {
-        inventories = inventoryService.GetAll();
-        return inventories;
+        recipients = recipientService.GetAll();
+        return recipients;
     }
 
     private void Add()
     {
-        if (inventory.InventoryId == 0)
+        if (recipient.RecipientId == 0)
         {
-            inventoryService.Add(inventory);
+            recipientService.Add(recipient);
         }
         else
         {
-            inventoryService.Update(inventory);
+            recipientService.Update(recipient);
         }
-        inventory = new Inventory();
+        recipient = new Recipient();
         snackBar.Add("Inventory Added.", Severity.Success);
         GetAll();
     }
 
-    private void Update(Inventory record)
+    private void Update(Recipient record)
     {
-        inventory = record;
+        recipient = record;
         StateHasChanged();
     }
 
-    private async Task Delete(Inventory record)
+    private async Task Delete(Recipient record)
     {
         bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
         if (confirmed)
         {
-            inventoryService.Delete(record);
+            recipientService.Delete(record);
             snackBar.Add("Inventory Deleted.", Severity.Success);
             GetAll();
         }
     }
 
-    private MudTable<Inventory> _table;
+    private MudTable<Recipient> _table;
 
     private void PageChanged(int i)
     {

@@ -36,7 +36,16 @@
                         }
                     </MudSelect>
                 </MudItem>
+                <MudItem xs="12" sm="4" md="6">
+                    <MudSelect T="int" Label="Select Inventory type" @bind-Value="tools.RecipientId">
+                        @foreach (var recipient in recipients)
+                        {
+                            <MudSelectItem T="int" Value="@recipient.RecipientId">@recipient.RecipientName</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
             </MudGrid>
+            <br />
             <MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="Add">Add Tool</MudButton>
         </EditForm>
     </MudCardContent>
@@ -53,12 +62,14 @@
         <MudTh>Last Name</MudTh>
         <MudTh>Man Number</MudTh>
         <MudTh>Department</MudTh>
+        <MudTh>Department</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="First Name">@context.TypeName</MudTd>
         <MudTd DataLabel="Last Name">@context.CompanyName</MudTd>
         <MudTd DataLabel="Last Name">@context.InventoryNumber</MudTd>
         <MudTd DataLabel="Last Name">@context.Inventory.InventoryName</MudTd>
+        <MudTd DataLabel="Last Name">@context.Recipient.RecipientName</MudTd>
         <MudTd DataLabel="Actions">
             <MudFab @onclick="@(()=>Update(context))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
             <MudFab @onclick="@(()=>Delete(context))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />
@@ -76,11 +87,14 @@
     private Inventory inventory = new Inventory();
     private List<Inventory> inventories = new List<Inventory>();
     private List<Tools> toolses = new List<Tools>();
+    private Recipient recipient = new Recipient();
+    private List<Recipient> recipients = new List<Recipient>();
 
     protected override async Task OnInitializedAsync()
     {
         inventories = inventoryService.GetAll();
         toolses = toolsService.GetAll();
+        recipients = recipientService.GetAll();
     }
 
     private bool Search(Tools tools)

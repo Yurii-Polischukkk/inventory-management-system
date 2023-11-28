@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 builder.Services.AddTransient<InventoryService>();
 builder.Services.AddTransient<ToolsService>();
+builder.Services.AddTransient<RecipientService>();
 builder.Services.AddMudServices();
 
 var app = builder.Build();

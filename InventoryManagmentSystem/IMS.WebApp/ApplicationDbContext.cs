@@ -9,5 +9,6 @@ namespace IMS.WebApp
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public virtual DbSet<Tools> Tools { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
+        public virtual DbSet<Recipient> Recipient { get; set; }
     }
 }
