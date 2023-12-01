@@ -18,12 +18,12 @@
     </MudCardHeader>
     <MudCardContent>
         <EditForm OnValidSubmit="Add" Model="@tools">
-            <MudGrid>
+            <MudGrid>               
                 <MudItem xs="12" sm="4" md="6">
-                    <MudTextField @bind-Value="tools.TypeName" Label="Type Name" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+                    <MudTextField @bind-Value="tools.CompanyName" Label="Brand" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
                 </MudItem>
                 <MudItem xs="12" sm="4" md="6">
-                    <MudTextField @bind-Value="tools.CompanyName" Label="Company Name" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+                    <MudTextField @bind-Value="tools.TypeName" Label="Model" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
                 </MudItem>
                 <MudItem xs="12" sm="4" md="6">
                     <MudTextField @bind-Value="tools.InventoryNumber" Label="Inventory Number" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
@@ -37,12 +37,21 @@
                     </MudSelect>
                 </MudItem>
                 <MudItem xs="12" sm="4" md="6">
-                    <MudSelect T="int" Label="Select Inventory type" @bind-Value="tools.RecipientId">
+                    <MudSelect T="int" Label="Select user" @bind-Value="tools.RecipientId">
                         @foreach (var recipient in recipients)
                         {
                             <MudSelectItem T="int" Value="@recipient.RecipientId">@recipient.RecipientName</MudSelectItem>
                         }
                     </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="4" md="6">
+                    <MudTextField @bind-Value="tools.PurchasePrice" Label="Price" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+                </MudItem>
+                <MudItem xs="12" sm="4" md="6">
+                    <MudTextField @bind-Value="tools.DateTransfer" Label="Date of transfer" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+                </MudItem>
+                <MudItem xs="12" sm="4" md="6">
+                    <MudTextField @bind-Value="tools.Conditions" Label="Conditions" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
                 </MudItem>
             </MudGrid>
             <br />
@@ -55,21 +64,27 @@
     <ToolBarContent>
         <MudText Typo="Typo.h6">Tools</MudText>
         <MudSpacer />
-        <MudTextField @bind-Value="searchString" Placeholder="Search for Employees..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Rounded.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        <MudTextField @bind-Value="searchString" Placeholder="Search for Brand..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Rounded.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
     <HeaderContent>
-        <MudTh>First Name</MudTh>
-        <MudTh>Last Name</MudTh>
-        <MudTh>Man Number</MudTh>
-        <MudTh>Department</MudTh>
-        <MudTh>Department</MudTh>
+        <MudTh>Brand Name</MudTh>
+        <MudTh>Model</MudTh>
+        <MudTh>Inventory Num.</MudTh>
+        <MudTh>Type</MudTh>
+        <MudTh>User</MudTh>
+        <MudTh>Date of transfer</MudTh>
+        <MudTh>Price</MudTh>
+        <MudTh>Conditions</MudTh>
     </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="First Name">@context.TypeName</MudTd>
-        <MudTd DataLabel="Last Name">@context.CompanyName</MudTd>
-        <MudTd DataLabel="Last Name">@context.InventoryNumber</MudTd>
-        <MudTd DataLabel="Last Name">@context.Inventory.InventoryName</MudTd>
-        <MudTd DataLabel="Last Name">@context.Recipient.RecipientName</MudTd>
+    <RowTemplate>     
+        <MudTd DataLabel="Brand Name">@context.CompanyName</MudTd>
+        <MudTd DataLabel="Model">@context.TypeName</MudTd>
+        <MudTd DataLabel="Inventory Num.">@context.InventoryNumber</MudTd>
+        <MudTd DataLabel="Type">@context.Inventory.InventoryName</MudTd>
+        <MudTd DataLabel="User">@context.Recipient.RecipientName</MudTd>
+        <MudTd DataLabel="Date of transfer">@context.DateTransfer</MudTd>
+        <MudTd DataLabel="Price">@context.PurchasePrice</MudTd>
+        <MudTd DataLabel="Conditions">@context.Conditions</MudTd>
         <MudTd DataLabel="Actions">
             <MudFab @onclick="@(()=>Update(context))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
             <MudFab @onclick="@(()=>Delete(context))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IMS.WebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231128200037_init1")]
-    partial class init1
+    [Migration("20231129231256_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,10 +69,21 @@ namespace IMS.WebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Conditions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateTransfer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("InventoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("InventoryNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchasePrice")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipientId")

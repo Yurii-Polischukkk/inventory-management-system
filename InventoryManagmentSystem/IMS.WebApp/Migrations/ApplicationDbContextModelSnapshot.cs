@@ -67,10 +67,21 @@ namespace IMS.WebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Conditions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateTransfer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("InventoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("InventoryNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchasePrice")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipientId")

@@ -17,8 +17,8 @@
     </MudCardHeader>
     <MudCardContent>
         <EditForm OnValidSubmit="Add" OnInvalidSubmit='()=>snackBar.Add("Provide a name",Severity.Warning)' Model="@inventory">
-            <MudTextField @bind-Value="inventory.InventoryName" Label="Department Name" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
-            <MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="Add">Add Inventory</MudButton>
+            <MudTextField @bind-Value="inventory.InventoryName" Label="Inventory Type" Variant="Variant.Text" Margin="Margin.Normal"></MudTextField>
+            <MudButton Variant="Variant.Filled" Color="Color.Info" OnClick="Add">Add Type</MudButton>
         </EditForm>
     </MudCardContent>
 </MudCard>
@@ -31,12 +31,12 @@
     </ToolBarContent>
     <HeaderContent>
         <MudTh>Inventory Id</MudTh>
-        <MudTh>Inventory Name</MudTh>
+        <MudTh>Inventory Type</MudTh>
         <MudTh>Actions</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.InventoryId</MudTd>
-        <MudTd DataLabel="Inventory Name">@context.InventoryName</MudTd>
+        <MudTd DataLabel="Inventory Type">@context.InventoryName</MudTd>
         <MudTd DataLabel="Actions">
             <MudFab @onclick="@(()=>Update(context))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
             <MudFab @onclick="@(()=>Delete(context))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />

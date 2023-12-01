@@ -4,7 +4,7 @@
 
 namespace IMS.WebApp.Migrations
 {
-    public partial class init1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,9 @@ namespace IMS.WebApp.Migrations
                     TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InventoryNumber = table.Column<int>(type: "int", nullable: false),
+                    PurchasePrice = table.Column<int>(type: "int", nullable: false),
+                    DateTransfer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Conditions = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InventoryId = table.Column<int>(type: "int", nullable: false),
                     RecipientId = table.Column<int>(type: "int", nullable: false)
                 },

@@ -12,6 +12,9 @@ namespace IMS.Shared
         public string TypeName { get; set; }
         public string CompanyName { get; set; }
         public int InventoryNumber { get; set; }
+        public int PurchasePrice { get; set; }
+        public string DateTransfer { get; set; }
+        public string Conditions {  get; set; }
         public int InventoryId { get; set; }
         public Inventory Inventory { get; set; }
         public Recipient Recipient {  get; set; }
